@@ -1,4 +1,6 @@
 //	Nathan Kruger
+//	Filled in for empty code
+//
 //  util.cpp
 //
 //  Implementation of Timing Tests
@@ -31,6 +33,7 @@
 #include <iostream>
 
 using namespace std;
+using namespace std::chrono;
 
 namespace csi281 {
     
@@ -49,7 +52,9 @@ namespace csi281 {
 			randArray[length] = randomNum;
 		}
 
-		return randArray;
+		return randArray[];
+
+		delete[] randArray;
 	}
     // Finds the speed of linear versus binary search
     // in a random int array of *length* size
@@ -61,5 +66,53 @@ namespace csi281 {
     // Suggest using the facilities in STL <chrono>
     pair<nanoseconds, nanoseconds> arraySearchSpeed(const int length, const int numTests) {
         // YOUR CODE HERE
+		int searchArray[] = randomIntArray(length, 1, 1000);
+		int keyNum = 286;
+		double linearTotal = 0;
+		double binaryTotal = 0;
+
+		for (int i = 0; i < numTests + 1; i++)
+		{
+			auto start = duration_cast <nanoseconds> (system_clock::now().time_since_epoch()).count();
+			for (int j = 0; j < length + 1; j++)
+			{
+				if (searchArray[j] == keyNum)
+				{
+					break;
+				}
+			}
+			auto end = duration_cast <nanoseconds> (system_clock::now().time_since_epoch()).count();
+			linearTotal += end;
+		}
+		double linearAvg = linearTotal / numTests;
+
+		for (int k = 0; k < numTests + 1; k++)
+		{
+			auto start = duration_cast <nanoseconds> (system_clock::now().time_since_epoch()).count();
+			sort(begin(searchArray), end(searchArray);
+			int startSearch = 0;
+			int endSearch = length - 1;
+			while (startSearch <= endSearch)
+			{
+				int midSplit = startSearch + (endSearch - startSearch) / 2;
+				if (keyNum < searchArray[midSplit])
+				{
+					endSearch = midSplit - 1;
+				}
+				else if (keyNum > searchArray[midSplit])
+				{
+					startSearch = midSplit + 1
+				}
+				else
+				{
+					break;
+				}
+			}
+			auto end = duration_cast <nanoseconds> (system_clock::now().time_since_epoch()).count();
+			binaryTotal += end;
+		}
+		double binaryAvg = binaryTotal / numTests;
+
+		return make_pair(linearAvg, binaryAvg); //looked up how to return a pair:www.geeksforgeeks.org/returning-multiple-values-from-a-function-using-tuple-and-pair-in-c/
     }
 }
