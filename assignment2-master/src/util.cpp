@@ -1,4 +1,4 @@
-//
+//	Nathan Kruger
 //  util.cpp
 //
 //  Implementation of Timing Tests
@@ -37,10 +37,20 @@ namespace csi281 {
     // Returns a new int array of *length* and filled
     // with numbers between *min* and *max*
     // Suggest using the facilities in STL <random>
-    int *randomIntArray(const int length, const int min, const int max) {
-        // YOUR CODE HERE
-    }
-    
+	int* randomIntArray(const int length, const int min, const int max) {
+		// YOUR CODE HERE
+		int* randArray = new int[length];
+
+		for (int i = 0; i < length + 1; i++)
+		{
+			default_random_engine randomGen;
+			uniform_int_distribution<int> range(min, max);
+			int randomNum = range(randomGen);
+			randArray[length] = randomNum;
+		}
+
+		return randArray;
+	}
     // Finds the speed of linear versus binary search
     // in a random int array of *length* size
     // by running *numTests* and averaging them
