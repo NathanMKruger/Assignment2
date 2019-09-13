@@ -1,3 +1,5 @@
+//	Nathan Kruger
+//	Filled in for empty code
 //
 //  search.h
 //  
@@ -36,6 +38,14 @@ namespace csi281 {
     template <typename T>
     int linearSearch(T array[], const int length, const T key) {
         // YOUR CODE HERE
+		for (int i = 0; i < length; i++)
+		{
+			if (array[i] == key)
+			{
+				return i;
+			}
+		}
+		return -1;
     }
     
     // Returns the first location of the found key
@@ -43,6 +53,26 @@ namespace csi281 {
     template <typename T>
     int binarySearch(T array[], const int length, const T key) {
         // YOUR CODE HERE
+		int arrayBegin = 0;
+		int arrayEnd = length - 1;
+
+		while (arrayBegin <= arrayEnd)
+		{
+			int arrayMid = arrayBegin + (arrayEnd - arrayBegin) / 2;
+			if (key < array[arrayMid])
+			{
+				arrayEnd = arrayMid - 1;
+			}
+			else if (key > array[arrayMid])
+			{
+				arrayBegin = arrayMid + 1;
+			}
+			else
+			{
+				return arrayMid;
+			}
+		}
+		return -1;
     }
 }
 
