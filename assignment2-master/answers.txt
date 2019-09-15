@@ -1,8 +1,10 @@
 Nathan Kruger
 
-1. O(1) since the random numbers being put into the array will take a constant amount of time based on the constant value of the array length.
+1. O(1) since the random numbers being put into the array will take a constant
+amount of time based on the constant value of the array length.
 
-2. O(n) because O(n) of the linear search grows faster than the O(log n) of the binary search and is therefore closer to the function's possible upper bounds.
+2. O(n) because O(n) of the linear search grows faster than the O(log n) of the
+binary search and is therefore closer to the function's possible upper bounds.
 
 3. 
 
